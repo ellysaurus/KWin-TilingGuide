@@ -1,5 +1,6 @@
 # Guide to tiling with the KWin window manager
-![how it looks](https://i.redd.it/nv0wv5x5vzd41.png)
+
+![how it looks](https://i.imgur.com/hPgVWLp.png)
 ### Intro
 I will try my best to make this understandable for anyone. keep in mind my first language isnt english so there might be some wierd stuff lol. and also my neckbeard isnt at its most fluffy today. but i hope this helps or maybe guide you to something you will enjoy. im guessing the reason you are here is because you love tiling. but also maybe love some of the features of KDE plasma. if soo cool, me too! also you should maybe read the guide and steps before starting to see if maybe there is something you need to do before starting. 
 
@@ -13,7 +14,8 @@ I will try my best to make this understandable for anyone. keep in mind my first
 sike! before actually installing.
 
 ### Removing the titlebar
-go to **settings** -> **Application Style** -> **window decorations**. pick breeze. now dont worry about your global theme. as we are just removing the titlebar (dont worry there will be a shortcut for all of the titlebar buttons, but you dont need those for tiling anyway rly).
+go to **settings** _->_ **Application Style** _->_ **window decorations**. pick breeze, as you need a theme with the options. now dont worry about your global theme. as we are just removing the titlebar.
+_(dont worry there is a shortcut for all of the titlebar buttons, but you dont need those for tiling anyway. thats kind of the point of a tiling window manager.)_
 
 select Breeze, click its edit button(looks like a pen). a window should pop up like the one under.
 ![popup](https://i.imgur.com/ClKoWeW.png)
@@ -29,27 +31,22 @@ I would use the 'normal' thickness for borders and shaddows are up to you.
 ![border](https://i.imgur.com/3NbvyiC.png)
 
 
+To get the colored borders. you need to edit the ```kdeglobals``` file.
 
-now, to get colored borders we need to make a custom color theme. i use 2 actually, because its so easy to use them. the reason we need a custom theme is that, the color of the border is actually called 'Window Background' so this theme for borders are only for windows that use their own background. like your terminal, spotify, Web browser, discord etc.
+that file is located in your .config folder.
+You should make a copy of it. and rename it something like ```kdeglobals.old``` so you have a copy of the original.
 
-So! under appearance in system settings. go to **Colors**. pick anyone there and same as before click the edit button. (dont worry we will save as a new theme)
-a popup should show up again
+at the bottom of the file under the ``[WM]`` section. This is where you might have to add the lines you need. i highlighted the lines in the picture below.
+![how it looks](https://i.imgur.com/gU9YODx.png)
 
-![colors](https://i.imgur.com/46yUVLj.png)
+the colors you need have to be in RGB format.
+```
+frame=153, 211, 255
+inactiveFrame=38, 38, 38
+```
 
-here change the window background to the color you want on your border. then save as another theme. maybe like 'tiling border'
-then on a window you want the colored border on(and remember not all will work with this as their actual background will change).
-
-* have the window open
-* hit **alt** + **f3**
-* click **More Actions**
-* click '**Configure Special Applicationn Settings**'
-* go to the far right tab called 'Appearance & Fixes'
-* check the 'Titlebar color scheme', choose 'Force', and pick the theme you just made and click ok
-
-![](https://i.imgur.com/83ruw4I.png)
-
-Now you should have colored borders.
+When you save after the edit. The borders might all go white. Dont worry just log out and back in again. This should be all you need to get the borders done. 
+Now the border color will be different on the window who has focus. i suggest going into syste settings, and set a keybinding to change focus.
 
 
 ### top bar
@@ -62,16 +59,21 @@ right click your bar, and click 'add widgeets' (the nice big plus symbol). The o
 
 ## Installing the tiling script.
 
-well. here you need to go to the creator of the script and follow his guide. its very easy to install. just follow that and then come back here after intalling.
+Well. here you need to go to the creator of the script and follow his guide. Its very easy to install. just follow that and then come back here after intalling.
 
 [The Script](https://github.com/kwin-scripts/kwin-tiling)
 
 
-now that its installed, open system setting again.
+now that its installed, open systemsettings again.
 under Workspace, go to KWin scripts. and you should se a script called 'Tiling Extension'. like in the picture below.
 ![settings](https://i.imgur.com/kRunt3h.png)
 
-then click the settings wheel another pupup should show up. this will be the settings for the gaps and such. the first tab, make sure to not check the 'remove borders' as we have worked so hard on our borders. and if you want to configure how it works with multiple desktops its here in the first tab aswell
+then click the settings wheel another pupup should show up.__if there isnt a wheel there, run this in your terminal:__
+```
+mkdir -p ~/.local/share/kservices5
+ln -s ~/.local/share/kwin/scripts/kwin-script-tiling/metadata.desktop ~/.local/share/kservices5/kwin-script-tiling.desktop
+```
+this will be the settings for the gaps and such. the first tab, make sure to not check the 'remove borders' as we have worked so hard on our borders lol.
 
 ### Gaps
 next tab, the gaps. here i use 15 on left, right, bottom and top.
@@ -80,12 +82,8 @@ then click ok
 
 ![gaps](https://i.imgur.com/1i67GqB.png)
 
-
 now you should be done. there is a cheat sheet at the script creators page. but i have also made a 'fake' man page for my self that im guessing some others also might like.
-
-
 ***
-
 ## Manual(ish)
 so what i did is i added and the sheet of commands into a txt file. placed it in my home dir. and in my .bashrc added this:
 
@@ -93,7 +91,7 @@ so what i did is i added and the sheet of commands into a txt file. placed it in
 
 this way, when i want to know something i can just type 'tiling' in my terminal and i get the help i need.
 
-[Link to the txt file](https://github.com/waltereikrem/tiling-sheet/blob/master/tiling-help.txt)
+[Link to the txt file](https://github.com/waltereikrem/tiling-sheet/blob/master/tiling-help.txt) there might be some bindings in that sheet that isnt bound by default tho.
 
 ![sheet](https://i.imgur.com/1PJXB5y.png)
 
